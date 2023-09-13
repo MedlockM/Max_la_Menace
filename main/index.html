@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://localhost:5000/main/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Flask App - Auto-GPT</title>
+    <title>Main - Auto-GPT</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Flask App";
+        var mkdocs_page_name = "Main";
         var mkdocs_page_input_path = "main.md";
         var mkdocs_page_url = "/main/";
       </script>
@@ -45,30 +45,12 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../draw/">Draw</a>
+                <li class="toctree-l1"><a class="reference internal" href="../draw/">find_all_paths Function</a>
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Flask App</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Main</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#api-endpoints">API Endpoints</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_1">/</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#search">/search</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#function-find_all_paths">Function: find_all_paths()</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#templates">Templates</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a>
-    </li>
     </ul>
                 </li>
               </ul>
@@ -86,7 +68,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Flask App</li>
+      <li>Main</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -95,44 +77,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="flask-app">Flask App<a class="headerlink" href="#flask-app" title="Permanent link">&para;</a></h1>
-<p>This is a Flask web application that allows users to search for train paths between two stations. It uses the <code>pandas</code> library to read train data from a CSV file, and the <code>networkx</code> library to represent the train network as a graph.</p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>To run this app, you need to have Flask, pandas, networkx, and requests installed. You can install them using the following command:</p>
-<pre><code class="language-shell">pip install flask pandas networkx requests
-</code></pre>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To run the app, execute the following command in your terminal:</p>
-<pre><code class="language-shell">python app.py
-</code></pre>
-<p>This will start the Flask development server, and the app will be available at <code>http://localhost:5000</code>.</p>
-<h2 id="api-endpoints">API Endpoints<a class="headerlink" href="#api-endpoints" title="Permanent link">&para;</a></h2>
-<h3 id="_1"><code>/</code><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>This endpoint displays the home page of the app. It renders the <code>index.html</code> template and passes a list of station names to the template.</p>
-<h3 id="search"><code>/search</code><a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
-<p>This endpoint is triggered when the user submits the search form on the home page. It reads the user's inputs and performs a search for train paths between the specified start and end stations. </p>
-<p>The train data is downloaded from the SNCF API and stored in a pandas DataFrame. The search is then performed using the <code>find_all_paths()</code> function, which uses a recursive depth-first search algorithm to explore the train network graph.</p>
-<p>The search results are rendered in the <code>search.html</code> template and displayed to the user.</p>
-<h2 id="function-find_all_paths">Function: <code>find_all_paths()</code><a class="headerlink" href="#function-find_all_paths" title="Permanent link">&para;</a></h2>
-<p>This function takes in a network graph <code>G</code>, a start station name, an end station name, and the maximum number of hops, and returns a list of all paths between the start and end stations within the specified maximum number of hops.</p>
-<p>It uses a recursive depth-first search algorithm to explore the graph and find all possible paths. The algorithm keeps track of the number of hops made so far and the path taken. When the end station is reached, the current path is added to the list of all paths found.</p>
-<h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
-<p>The app uses two HTML templates: <code>index.html</code> and <code>search.html</code>.</p>
-<p>The <code>index.html</code> template displays a form for the user to enter their search criteria, and a dropdown menu to select the start and end stations.</p>
-<p>The <code>search.html</code> template displays the search results in a table format.</p>
-<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
-<p>This app has the following dependencies:</p>
+                <h3 id="find_all_pathsg-start_station-end_station-max_hops">find_all_paths(G, start_station, end_station, max_hops)<a class="headerlink" href="#find_all_pathsg-start_station-end_station-max_hops" title="Permanent link">&para;</a></h3>
+<p>This function finds all possible paths between a start station and an end station in a given graph, considering a maximum number of hops.</p>
+<p><strong>Parameters:</strong></p>
 <ul>
-<li>Flask: A micro web framework for Python</li>
-<li>pandas: A library for data manipulation and analysis</li>
-<li>networkx: A library for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks</li>
-<li>requests: A library for making HTTP requests</li>
+<li>G (networkx.MultiDiGraph): The graph representing the train network.</li>
+<li>start_station (str): The name of the start station.</li>
+<li>end_station (str): The name of the end station.</li>
+<li>max_hops (int): The maximum number of hops allowed in the path.</li>
 </ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>all_paths (list): A list of all possible paths between the start and end stations.</li>
+</ul>
+<p><strong>Exceptions/Errors:</strong></p>
+<p>None.</p>
+<h3 id="index">index()<a class="headerlink" href="#index" title="Permanent link">&para;</a></h3>
+<p>This function renders the index.html template, displaying a form for selecting the start and end stations.</p>
+<p><strong>Parameters:</strong></p>
+<p>None.</p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>render_template (flask.render_template): The rendered HTML template.</li>
+</ul>
+<p><strong>Exceptions/Errors:</strong></p>
+<p>None.</p>
+<h3 id="search">search()<a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
+<p>This function handles the form submission and performs the train search based on the user inputs.</p>
+<p><strong>Parameters:</strong></p>
+<p>None.</p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>render_template (flask.render_template): The rendered HTML template.</li>
+</ul>
+<p><strong>Exceptions/Errors:</strong></p>
+<p>None.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../draw/" class="btn btn-neutral float-left" title="Draw"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../draw/" class="btn btn-neutral float-left" title="find_all_paths Function"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>

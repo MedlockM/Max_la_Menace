@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://localhost:5000/draw/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Draw - Auto-GPT</title>
+    <title>find_all_paths Function - Auto-GPT</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Draw";
+        var mkdocs_page_name = "find_all_paths Function";
         var mkdocs_page_input_path = "draw.md";
         var mkdocs_page_url = "/draw/";
       </script>
@@ -45,13 +45,19 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Draw</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">find_all_paths Function</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#returns">Returns</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example Usage</a>
+    </li>
     </ul>
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../main/">Flask App</a>
+                <li class="toctree-l1"><a class="reference internal" href="../main/">Main</a>
                 </li>
               </ul>
       </div>
@@ -68,7 +74,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Draw</li>
+      <li>find_all_paths Function</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -77,89 +83,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="code-explanation">Code Explanation<a class="headerlink" href="#code-explanation" title="Permanent link">&para;</a></h2>
-<p>This code demonstrates how to download a CSV file from an API, load it into a pandas DataFrame, and perform graph operations using the NetworkX library.</p>
-<ol>
-<li>Import necessary libraries:</li>
-<li><code>requests</code> for making HTTP requests to download the CSV file.</li>
-<li><code>networkx</code> as <code>nx</code> for creating and manipulating graphs.</li>
-<li><code>pandas</code> as <code>pd</code> for working with tabular data.</li>
-<li><code>datetime</code> for dealing with date and time operations.</li>
-<li>
-<p><code>Flask</code> for building web applications.</p>
-</li>
-<li>
-<p>Set the date for user input.</p>
-</li>
-<li>
-<p>Make an HTTP request to download a CSV file from a specific URL using the <code>requests.get()</code> function. The response is saved in the <code>response</code> variable.</p>
-</li>
-<li>
-<p>Check if the request was successful by verifying the status code of the response. If it is 200, save the response content to a file named "tgvmax-auto.csv". If it is not 200, print a failure message.</p>
-</li>
-<li>
-<p>Load the downloaded CSV file into a pandas DataFrame using the <code>pd.read_csv()</code> function. The parameters <code>sep=';'</code> and <code>encoding='utf-8'</code> are provided to specify the delimiter and encoding of the CSV file, respectively.</p>
-</li>
-<li>
-<p>Filter the DataFrame based on user input and specific columns.</p>
-</li>
-<li>
-<p>Drop unnecessary columns from the DataFrame using the <code>df.drop()</code> function.</p>
-</li>
-<li>
-<p>Create an empty multigraph using <code>nx.MultiDiGraph()</code>.</p>
-</li>
-<li>
-<p>Get a set of all unique station names from the "origine" and "destination" columns of the DataFrame.</p>
-</li>
-<li>
-<p>Add each station as a node in the graph using the <code>G.add_node(station)</code> function.</p>
-</li>
-<li>
-<p>Iterate through each row of the DataFrame and create edges in the graph using the <code>G.add_edge()</code> function.</p>
-</li>
-<li>
-<p>Define a function named <code>find_all_paths()</code> to find all paths from the start station to the end station with a maximum number of hops.</p>
-</li>
-<li>
-<p>In the <code>find_all_paths()</code> function:</p>
-</li>
-<li>Declare an empty list to store all paths.</li>
-<li>Define a recursive inner function named <code>dfs()</code> to explore the graph.</li>
-<li>In the <code>dfs()</code> function:<ul>
-<li>Base case: if the current station is the end station, append the current path to the list of all paths and reset the number of hops.</li>
-<li>Explore the neighbors of the current station by iterating through the outgoing edges using the <code>G.edges()</code> function.</li>
-<li>Check if the neighbor station has not been visited previously in the current path.</li>
-<li>Check if the number of hops is less than the maximum allowed hops.</li>
-<li>Compare the departure and arrival times of the current train with the previous train to ensure a valid connection between stations.</li>
-<li>Recursively call the <code>dfs()</code> function with the neighbor station, incremented hops, and updated path.</li>
+                <h1 id="find_all_paths-function">find_all_paths Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h1>
+<p>This function is used to find all paths from the start station to the end station in a given graph with a maximum number of hops.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>G</code> (Graph): The graph representing the train network.</li>
+<li><code>start_station</code> (str): The name of the start station.</li>
+<li><code>end_station</code> (str): The name of the end station.</li>
+<li><code>max_hops</code> (int): The maximum number of hops allowed in the path.</li>
 </ul>
-</li>
-<li>
-<p>Call the <code>dfs()</code> function starting from the start station with initial hops as 0 and the path containing only the start station.</p>
-</li>
-<li>
-<p>Return the list of all paths.</p>
-</li>
-<li>
-<p>Example usage:</p>
-</li>
-<li>Set the start station, end station, and maximum number of hops.</li>
-<li>Call the <code>find_all_paths()</code> function with the defined parameters.</li>
-<li>If paths are found, print each path. Otherwise, print a message indicating that no paths were found.</li>
-</ol>
-<hr />
-<h2 id="example-output">Example Output<a class="headerlink" href="#example-output" title="Permanent link">&para;</a></h2>
-<p>Path: [('MARSEILLE ST CHARLES', datetime.time(0, 0), 0), ('AVIGNON TGV', datetime.time(15, 58), 0), ('LYON PART DIEU', datetime.time(17, 54), 0), ('LYON PERRACHE', datetime.time(19, 0), 0), ('〇 LYON (intramuros)', datetime.time(19, 2), 0), ('〇 LYON (...)
-Path: [('MARSEILLE ST CHARLES', datetime.time(0, 0), 0), ('AVIGNON TGV', datetime.time(15, 58), 0), ('LYON PART DIEU', datetime.time(17, 54), 0), ('LYON PERRACHE', datetime.time(19, 0), 0), ('〇 LYON (intramuros)', datetime.time(19, 2), 1), ('LYON ((...)
-Path: [('MARSEILLE ST CHARLES', datetime.time(0, 0), 0), ('AVIGNON TGV', datetime.time(15, 58), 0), ('LYON PART DIEU', datetime.time(17, 54), 0), ('LYON PERRACHE', datetime.time(19, 0), 0), ('〇 LYON (intramuros)', datetime.time(19, 2), 1), ('LYON ((...)
-... (truncated for brevity)</p>
+<h2 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
+</ul>
+<h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
+<pre><code class="language-python">start_station = &quot;MARSEILLE ST CHARLES&quot;
+end_station = &quot;LYON (intramuros)&quot;
+max_hops = 6
+paths = find_all_paths(G, start_station, end_station, max_hops)
+if paths:
+    for path in paths:
+        print(f&quot;Path: {path}&quot;)
+else:
+    print(&quot;No paths found&quot;)
+</code></pre>
+<p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../main/" class="btn btn-neutral float-right" title="Flask App">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../main/" class="btn btn-neutral float-right" title="Main">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
