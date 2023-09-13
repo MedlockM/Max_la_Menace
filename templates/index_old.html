@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TGV Path Finder</title>
+</head>
+<body>
+    <h1>TGV Path Finder</h1>
+    <form action="/search" method="POST">
+        <label for="date">Travel Date:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="start_station">Start Station:</label>
+        <select id="start_station" name="start_station" required>
+            {% for station in stations %}
+                <option value="{{ station }}">{{ station }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="end_station">End Station:</label>
+        <select id="end_station" name="end_station" required>
+            {% for station in stations %}
+                <option value="{{ station }}">{{ station }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
+

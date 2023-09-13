@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Max la Menace</title>
+  <style>
+    #searchInput {
+      width: 300px;
+      height: 30px;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    #suggestionsContainer {
+      margin-top: 10px;
+    }
+
+    #suggestionsContainer div {
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    #suggestionsContainer div:hover {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <h1>Max la Menace</h1>
+  <form action="/search" method="POST">
+    <label for="date">Date du voyage:</label>
+    <input type="date" id="date" name="date" required><br><br>
+
+    <label for="start_station">Gare de départ:</label>
+    <input type="text" id="startInput" name="start_station" placeholder="Entrez le nom d'une gare" required>
+    <div id="startSuggestionsContainer"></div><br><br>
+
+    <label for="end_station">Gare d'arrivée:</label>
+    <input type="text" id="endInput" name="end_station" placeholder="Entrez le nom d'une gare" required>
+    <div id="endSuggestionsContainer"></div><br><br>
+
+    <label for="max_hops">Maximum correspondances:</label>
+    <input type="number" id="number" name="max_hops" required><br><br>
+
+    <input type="submit" value="Rechercher">
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    var stations = ['ROCAMADOUR PADIRAC', 'NANCY', 'REIMS', 'VENDOME VILLIERS SUR LOIR', 'CHATELLERAULT', 'ST GEORGES DE LUZENCON', 'MILLAU', 'FREIBURG BREISGAU HBF', 'BAR LE DUC', 'MUENCHEN HBF', 'CERBERE', 'EVIAN LES BAINS', 'GRAMAT', 'BEZIERS', 'MOUCHARD', 'ANTIBES', 'EMBRUN', 'THONON LES BAINS', 'PORT VENDRES VILLE', 'SELESTAT', 'LA BAULE ESCOUBLAC', 'NEVERS', 'LA ROCHELLE VILLE', 'CALAIS VILLE', 'LENS', 'PERPIGNAN', 'KARLSRUHE HBF', 'BRUXELLES MIDI BRUSSEL ZUID', 'FUTUROSCOPE', 'MODANE', 'LAVAL', 'MULHOUSE VILLE', 'CANNES', 'BESANCON VIOTTE', 'LUZENAC GARANOU', 'ST MALO', 'BEDARIEUX', 'LES ARCS DRAGUIGNAN', 'MEUSE TGV', 'LUCON', 'ANCENIS', 'MASSY TGV', 'CAUSSADE TARN ET GARONNE', 'SETE', "LE BOUSQUET D'ORB", 'TARASCON SUR ARIEGE', 'TGV HAUTE PICARDIE', 'LANDERNEAU', 'SEDAN', 'LYON (intramuros)', 'EPINAL', 'VITRY LE FRANCOIS GARE', 'CLERMONT FERRAND', 'AEROPORT CDG2 TGV ROISSY', 'LE POULIGUEN', 'ST JEAN DE MAURIENNE ARVAN', 'LAMBALLE', 'AURAY', 'ANNEMASSE', 'BANYULS SUR MER', 'FRANKFURT MAIN HBF', 'LIMOGES BENEDICTINS', 'POITIERS', 'BORDEAUX ST JEAN', 'ARGELES SUR MER', 'CHATEAUROUX', 'BELFORT-MONTBELIARD TGV', 'ST PIERRE DES CORPS', 'ANGOULEME', 'BETHUNE', 'MONTAUBAN VILLE BOURBON', 'METZ VILLE', 'TARBES', 'LA ROCHE SUR YON', 'QUIMPERLE', 'OFFENBOURG/OFFENBURG', 'NIMES', 'TOULON', 'ST GAUDENS', 'LUNEVILLE', 'AGEN', 'ST DENIS PRES MARTEL', 'TBD', 'BIARRITZ', 'SARREBOURG', 'REMIREMONT', 'PARIS (intramuros)', 'LYON-SAINT EXUPERY TGV', 'ISSOIRE', 'ISSOUDUN', 'VIERZON VILLE', 'BESANCON - F COMTE TGV', "L'ARGENTIERE LES ECRINS   (05)", 'SAVERNE', 'NURIEUX', 'ST RAPHAEL VALESCURE', 'AX LES THERMES', 'BAYONNE', 'BANASSAC LA CANOURGUE', 'CARMAUX', 'STRASBOURG', 'VITRE', 'ST ETIENNE CHATEAUCREUX', 'ARGENTON SUR CREUSE', 'CHAMBERY CHALLES LES EAUX', 'VICHY', "ST CHELY D'APCHER", 'CHALONS EN CHAMPAGNE', 'CAHORS', 'MASSIAC BLESLE', 'HAZEBROUCK', 'QUIMPER', 'TOURCOING', 'ST JEAN DE LUZ CIBOURE', 'MONTDAUPHIN GUILLESTRE', 'BREST', 'AIX EN PROVENCE TGV', "LES SABLES D'OLONNE", 'LES CABANNES', 'SEVERAC LE CHATEAU', 'ETAPLES LE TOUQUET', 'AIX LES BAINS LE REVARD', 'DOLE VILLE', 'ST FLOUR CHAUDES AIGUES', 'MONTBARD', 'FORBACH', 'AUBIN', 'SURGERES', 'LUXEMBOURG', 'MASSY PALAISEAU', 'GUINGAMP', 'PLOUARET TREGOR', 'TOULOUSE MATABIAU', 'DAX', 'LE CROISIC', 'MANNHEIM HBF', 'NICE VILLE', 'ELNE', 'UZERCHE', 'FRASNE', 'BOULOGNE VILLE', 'CAPDENAC', 'BRIANCON', 'VEYNES DEVOLUY', 'ULM HBF', 'ALBI VILLE', 'CAMPAGNAC ST GENIEZ', 'RENNES', 'COLMAR', 'DIJON VILLE', 'BADEN BADEN', 'CASTELNAUDARY', 'RANG DU FLIERS VERTON', 'ROUEN RIVE DROITE', 'LATOUR DE CAROL ENVEITG', 'LORIENT', 'ARCACHON', 'RETHEL', 'SABLE SUR SARTHE', 'CHAMPAGNE-ARDENNE', 'ST NAZAIRE', 'SOUILLAC', 'CRANSAC', 'AUMONT AUBRAC', 'NANTES', 'ARLES', 'MACON LOCHE TGV', 'ST ROME DE CERNON', 'BARCELONA SANTS', 'VANNES', 'ST DIE DES VOSGES', 'CALAIS FRETHUN', 'TOURNEMIRE ROQUEFORT', 'MONTREJEAU GOURDAN POLIGNAN', 'MANTES LA JOLIE', 'COLLIOURE', 'MACON VILLE', 'ORANGE', 'ROANNE', 'ROSPORDEN', 'RODEZ', 'MOULINS SUR ALLIER', 'GENEVE', 'FACTURE BIGANOS', 'BOURG EN BRESSE', 'AGDE', 'MIRAMAS', 'LORRAINE TGV', 'ST MAIXENT DEUX SEVRES', 'CHARLEVILLE MEZIERES', 'MARMANDE', 'MAGALAS', 'FIGUERES VILA TGV', 'VERSAILLES CHANTIERS', 'ST CHRISTOPHE', 'MONTPELLIER SUD DE FRANCE', 'BOURGES', 'BASEL SBB', 'VIVIEZ DECAZEVILLE', 'CLISSON', 'BRASSAC LES MINES STE FLORINE', 'CHORGES', 'LANNION', 'ANNECY', 'SAUMUR', 'VALENCE VILLE', 'OULX CESANA CLAV SESTRIERE', 'LIBOURNE', 'CARCASSONNE', 'BEAUNE', 'TORINO PORTA SUSA', 'LANNEMEZAN', 'AUTERIVE', 'FOIX', 'KAISERSLAUTERN HBF', 'LILLE (intramuros)', 'ROCHEFORT', 'PAMIERS', 'LEZIGNAN-CORBIERES', 'JONZAC', 'LE CREUSOT MONTCEAU MONTCHANIN', 'PAU', 'MARVEJOLS', 'DOUAI', 'MERENS LES VALS', 'LA TESTE', 'MONTELIMAR GARE SNCF', 'NARBONNE', 'ARRAS', 'RIOM CHATEL GUYON', 'AUGSBURG HBF', 'DUNKERQUE', 'MARSEILLE BLANCARDE', 'PORNICHET', 'CREST', 'ST BRIEUC', 'LES AUBRAIS ORLEANS', 'ASSIER', 'CROIX WASQUEHAL', 'RINGSHEIM/EU-PARK', 'CHALON SUR SAONE', 'STUTTGART HBF', 'SARREBRUCK/SAARBRUECKEN', 'SAINTES', 'ARVANT', 'ROUBAIX', 'LE MONASTIER', 'SAVERDUN', 'ORTHEZ', 'GAP', 'DIE', 'HENDAYE', 'LUC EN DIOIS', 'MILANO P GARIBALDI', 'BRIVE LA GAILLARDE', 'MARNE LA VALLEE CHESSY', 'NIMES PONT DU GARD', 'BELLEGARDE', 'VALENCIENNES', 'DOL DE BRETAGNE', 'GRENOBLE', 'MONTPELLIER SAINT-ROCH', 'TOURS', 'CEILHES ROQUEREDONDE', 'GOURDON', 'REDON', 'ZUERICH HB', 'ST GERMAIN DES FOSSES', 'VALLORBE', 'AVIGNON TGV', 'LA SOUTERRAINE', 'VALENCE TGV RHONE-ALPES SUD', 'THIONVILLE', 'LAUSANNE', 'AVIGNON CENTRE', 'ALBI MADELEINE', 'LE HAVRE', 'MORLAIX', 'NEUSSARGUES', 'MARSEILLE ST CHARLES', 'PORTE PUYMORENS', 'FIGEAC', 'GIRONA', 'LOURDES', 'HYERES', 'LAHR SCHWARZW', 'LE MANS', 'ANGERS ST LAUD', 'NIORT', "ANDORRE - L'HOSPITALET"]
+
+    $(document).ready(function() {
+      // Get the start and end station input fields and suggestions containers
+      var startInput = $('#startInput');
+      var endInput = $('#endInput');
+      var startSuggestionsContainer = $('#startSuggestionsContainer');
+      var endSuggestionsContainer = $('#endSuggestionsContainer');
+
+      // Handle input event on start station input field
+      startInput.on('input', function() {
+        // Clear previous suggestions
+        startSuggestionsContainer.empty();
+
+        // Get the user input
+        var userInput = startInput.val().toLowerCase();
+
+        // Filter and display station suggestions
+        if (userInput.length > 0) {
+          var filteredStations = stations.filter(function(station) {
+            return station.toLowerCase().includes(userInput);
+          });
+
+          filteredStations.forEach(function(station) {
+            var suggestion = $('<div>').text(station);
+            suggestion.on('click', function() {
+              startInput.val(station);
+              startSuggestionsContainer.empty();
+            });
+            startSuggestionsContainer.append(suggestion);
+          });
+        }
+      });
+
+      // Handle input event on end station input field
+      endInput.on('input', function() {
+        // Clear previous suggestions
+        endSuggestionsContainer.empty();
+
+        // Get the user input
+        var userInput = endInput.val().toLowerCase();
+
+        // Filter and display station suggestions
+        if (userInput.length > 0) {
+          var filteredStations = stations.filter(function(station) {
+            return station.toLowerCase().includes(userInput);
+          });
+
+          filteredStations.forEach(function(station) {
+            var suggestion = $('<div>').text(station);
+            suggestion.on('click', function() {
+              endInput.val(station);
+              endSuggestionsContainer.empty();
+            });
+            endSuggestionsContainer.append(suggestion);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Max la Menace - Resultats</title>
+</head>
+<body>
+    <h1>Max la Menace - Resultats</h1>
+
+    {% if paths %}
+        <h2>Chemins trouvés en TGVMAX:</h2>
+        <ul>
+            {% for path in paths %}
+                <li>{{ path }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Pas de chemin en TGVMAX existant.</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Back to Search</a>
+</body>
+</html>
