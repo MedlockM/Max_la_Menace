@@ -51,7 +51,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../main/">Main</a>
+                <li class="toctree-l1"><a class="reference internal" href="../main/">`find_all_paths` Function</a>
                 </li>
               </ul>
       </div>
@@ -77,35 +77,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="find_all_paths">find_all_paths<a class="headerlink" href="#find_all_paths" title="Permanent link">&para;</a></h2>
-<p>Function to find all paths from the start station to the end station with a maximum number of hops.</p>
-<p><strong>Parameters:</strong>
-- <code>G</code> (nx.MultiDiGraph): The graph representing train stations and connections.
-- <code>start_station</code> (str): The name of the start station.
-- <code>end_station</code> (str): The name of the end station.
-- <code>max_hops</code> (int): The maximum number of hops allowed in the path.</p>
-<p><strong>Returns:</strong>
-- <code>all_paths</code> (list): A list of all paths from the start station to the end station.</p>
-<p><strong>Exceptions/Errors:</strong>
-None</p>
-<p><strong>Example:</strong></p>
-<pre><code class="language-python">start_station = &quot;MARSEILLE ST CHARLES&quot;
-end_station = &quot;LYON (intramuros)&quot;
-max_hops = 6
-paths = find_all_paths(G, start_station, end_station, max_hops)
-if paths:
-    for path in paths:
-        print(f&quot;Path: {path}&quot;)
-else:
-    print(&quot;No paths found&quot;)
-</code></pre>
+                <h2 id="find_all_pathsg-start_station-end_station-max_hops">find_all_paths(G, start_station, end_station, max_hops)<a class="headerlink" href="#find_all_pathsg-start_station-end_station-max_hops" title="Permanent link">&para;</a></h2>
 <hr />
+<p>This is a function that takes a MultiDiGraph, start_station, end_station, and max_hops as arguments and returns all paths from the start station to the end station with a maximum number of hops.</p>
+<hr />
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>G</code> (<code>networkx.classes.multidigraph.MultiDiGraph</code>): The MultiDiGraph.</li>
+<li><code>start_station</code> (<code>str</code>): The start station.</li>
+<li><code>end_station</code> (<code>str</code>): The end station.</li>
+<li><code>max_hops</code> (<code>int</code>): The maximum number of hops allowed.</li>
+</ul>
+<hr />
+<p><strong>Returns</strong>:</p>
+<ul>
+<li><code>all_paths</code> (<code>list</code> of <code>list</code> of <code>tuples</code>): All possible paths from the start to the end within the maximum allowed hops. Each path is represented as a list of tuples where each tuple is a step in the path and contains the neighbor, departure time, and the key of a train journey.</li>
+</ul>
+<hr />
+<p><strong>Raises</strong>:</p>
+<ul>
+<li>This function does not raise any exceptions.</li>
+</ul>
+<hr />
+<pre><code>------------------------------------------------------------------------------------------------------------------------
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../main/" class="btn btn-neutral float-right" title="Main">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../main/" class="btn btn-neutral float-right" title="`find_all_paths` Function">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

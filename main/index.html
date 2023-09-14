@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://localhost:5000/main/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Main - Auto-GPT</title>
+    <title>`find_all_paths` Function - Auto-GPT</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Main";
+        var mkdocs_page_name = "`find_all_paths` Function";
         var mkdocs_page_input_path = "main.md";
         var mkdocs_page_url = "/main/";
       </script>
@@ -49,7 +49,7 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Main</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">`find_all_paths` Function</a>
     <ul class="current">
     </ul>
                 </li>
@@ -68,7 +68,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Main</li>
+      <li>`find_all_paths` Function</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -77,21 +77,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="function-find_all_pathsg-start_station-end_station-max_hops">Function find_all_paths(G, start_station, end_station, max_hops)<a class="headerlink" href="#function-find_all_pathsg-start_station-end_station-max_hops" title="Permanent link">&para;</a></h3>
-<p>This function finds all paths between two stations in a given graph, with a maximum number of hops.</p>
-<p><strong>Parameters:</strong></p>
+                <h1 id="find_all_paths-function"><code>find_all_paths</code> Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h1>
+<p>This function accepts a networkx graph, a starting station, an ending station, and a maximum number of hops. It explores all possible paths between the start station and end station within the limit of max hops through a DFS. The function stores a path if it reaches the destination within the maximum number of hops.</p>
 <ul>
-<li>G (networkx.MultiDiGraph) - The graph representing train connections.</li>
-<li>start_station (string) - The starting station name.</li>
-<li>end_station (string) - The destination station name.</li>
-<li>max_hops (int) - The maximum number of hops allowed to reach the destination.</li>
+<li><strong>Parameters</strong><ul>
+<li><code>G</code> (nx.MultiDiGraph): The graph on which to find paths.</li>
+<li><code>start_station</code> (str): The starting station of the paths.</li>
+<li><code>end_station</code> (str): The ending station of the paths.</li>
+<li><code>max_hops</code> (int): The maximum number of hops allowed for a path.</li>
 </ul>
-<p><strong>Returns:</strong></p>
+</li>
+<li><strong>Returns</strong><ul>
+<li><code>all_paths</code> (list): List of all the valid paths found.</li>
+</ul>
+</li>
+<li><strong>Errors/Exceptions</strong><ul>
+<li>This function presumes that the graph <code>G</code> is correctly initialized and contains the <code>start_station</code> and <code>end_station</code>. Else, it will not return meaningful results.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="index-function"><code>index</code> Function<a class="headerlink" href="#index-function" title="Permanent link">&para;</a></h1>
+<p>Renders the <code>index.html</code> page with a list of sorted stations.</p>
 <ul>
-<li>all_paths (list) - A list of all paths between the start and end stations.</li>
+<li><strong>Parameters</strong><ul>
+<li>None</li>
 </ul>
-<p><strong>Exceptions/Errors:</strong></p>
-<p>None</p>
+</li>
+<li><strong>Returns</strong><ul>
+<li>HTML Template: The rendered <code>index.html</code> page containing the list of sorted stations.</li>
+</ul>
+</li>
+<li><strong>Errors/Exceptions</strong><ul>
+<li>If the <code>index.html</code> page does not exist in the application's templates folder, this function will throw an error.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="search-function"><code>search</code> Function<a class="headerlink" href="#search-function" title="Permanent link">&para;</a></h1>
+<p>This function accepts user inputted data via a POST request. It filters a DataFrame based on this input data and calculates all the valid paths from the starting station to ending station given the maximum number of hops. It then renders the <code>search.html</code> page along with the valid paths.</p>
+<ul>
+<li><strong>Parameters</strong><ul>
+<li>None</li>
+</ul>
+</li>
+<li><strong>Returns</strong><ul>
+<li>HTML Template: The rendered <code>search.html</code> page containing the list of valid paths from the start station to end station with the inputted maximum number of hops.</li>
+</ul>
+</li>
+<li><strong>Errors/Exceptions</strong><ul>
+<li>If user input data is not provided properly, this function may fail or produce unexpected results.</li>
+<li>This function also expects the <code>search.html</code> page to exist in the application's templates folder. If it does not exist, the function will throw an error.</li>
+</ul>
+</li>
+</ul>
 <hr />
               
             </div>
