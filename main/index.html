@@ -77,20 +77,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="find_all_paths-function">find_all_paths Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h3>
-<p>This function is used to find all paths from the start station to the end station in a given graph with a maximum number of hops.</p>
-<p><strong>Parameters</strong></p>
-<ul>
-<li><code>G</code> (Graph): The graph representing the train network.</li>
-<li><code>start_station</code> (str): The name of the start station.</li>
-<li><code>end_station</code> (str): The name of the end station.</li>
-<li><code>max_hops</code> (int): The maximum number of hops allowed in the path.</li>
-</ul>
-<p><strong>Returns</strong></p>
-<ul>
-<li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
-</ul>
-<h2 id="note-the-function-assumes-that-the-graph-g-is-already-created-and-contains-the-necessary-information-about-the-train-network"><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.<a class="headerlink" href="#note-the-function-assumes-that-the-graph-g-is-already-created-and-contains-the-necessary-information-about-the-train-network" title="Permanent link">&para;</a></h2>
+                <h5 id="find_all_paths">find_all_paths<a class="headerlink" href="#find_all_paths" title="Permanent link">&para;</a></h5>
+<p><strong>Parameters</strong>:
+- <code>G</code> (type: <em>networkx.classes.multidigraph.MultiDiGraph</em>) - The graph representing the train network.
+- <code>start_station</code> (type: <em>str</em>) - The starting station for finding paths.
+- <code>end_station</code> (type: <em>str</em>) - The ending station for finding paths.
+- <code>max_hops</code> (type: <em>int</em>) - The maximum number of hops allowed in a path.</p>
+<p><strong>Return</strong>:
+- <code>all_paths</code> (type: <em>list</em>) - A list containing all paths from the start station to the end station within the maximum number of hops.</p>
+<p><strong>Exception/Errors</strong>:
+- None.</p>
+<hr />
+<h5 id="index">index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h5>
+<p><strong>Parameters</strong>:
+- None.</p>
+<p><strong>Return</strong>:
+- <em>render_template</em> (type: <em>flask.templating.RenderTemplate</em>) - The HTML template for the index page.</p>
+<p><strong>Exception/Errors</strong>:
+- None.</p>
+<hr />
+<h5 id="search">search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h5>
+<p><strong>Parameters</strong>:
+- None.</p>
+<p><strong>Return</strong>:
+- <em>render_template</em> (type: <em>flask.templating.RenderTemplate</em>) - The HTML template for the search page.</p>
+<p><strong>Exception/Errors</strong>:
+- None.</p>
               
             </div>
           </div><footer>
