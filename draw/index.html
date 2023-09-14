@@ -47,6 +47,10 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Draw</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#returns">Returns</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -79,28 +83,17 @@
               
                 <h3 id="find_all_paths-function">find_all_paths Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h3>
 <p>This function is used to find all paths from the start station to the end station in a given graph with a maximum number of hops.</p>
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>G</code> (Graph): The graph representing the train network.</li>
 <li><code>start_station</code> (str): The name of the start station.</li>
 <li><code>end_station</code> (str): The name of the end station.</li>
 <li><code>max_hops</code> (int): The maximum number of hops allowed in the path.</li>
 </ul>
-<h2 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h2>
+<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
 </ul>
-<h2 id="example-usage">Example Usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h2>
-<pre><code class="language-python">start_station = &quot;MARSEILLE ST CHARLES&quot;
-end_station = &quot;LYON (intramuros)&quot;
-max_hops = 6
-paths = find_all_paths(G, start_station, end_station, max_hops)
-if paths:
-    for path in paths:
-        print(f&quot;Path: {path}&quot;)
-else:
-    print(&quot;No paths found&quot;)
-</code></pre>
 <p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.</p>
               
             </div>
