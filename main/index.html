@@ -81,32 +81,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="find_all_paths-function">find_all_paths Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h2>
+                <h3 id="find_all_paths-function">find_all_paths Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h3>
 <p>This function is used to find all paths from the start station to the end station in a given graph with a maximum number of hops.</p>
-<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>G</code> (Graph): The graph representing the train network.</li>
 <li><code>start_station</code> (str): The name of the start station.</li>
 <li><code>end_station</code> (str): The name of the end station.</li>
 <li><code>max_hops</code> (int): The maximum number of hops allowed in the path.</li>
 </ul>
-<h3 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h3>
+<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
 </ul>
 <p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.</p>
-<h2 id="index-function">index Function<a class="headerlink" href="#index-function" title="Permanent link">&para;</a></h2>
-<p>This function is the main route handler for the index page. It renders the index.html template with a sorted list of stations.</p>
-<h3 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h3>
+<hr />
+<h3 id="index-function">index Function<a class="headerlink" href="#index-function" title="Permanent link">&para;</a></h3>
+<p>This function is the main route of the Flask application. It renders the <code>index.html</code> template and passes a sorted list of stations to the template.</p>
+<h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li>(render_template) The rendered HTML template.</li>
+<li>HTML template rendered with stations data.</li>
 </ul>
-<h2 id="search-function">search Function<a class="headerlink" href="#search-function" title="Permanent link">&para;</a></h2>
-<p>This function is the route handler for the search page. It processes the user input, downloads the CSV file from the API, filters and processes the data, creates a graph, calls the <code>find_all_paths</code> function, and renders the search.html template with the paths.</p>
-<h3 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h3>
-<ul>
-<li>(render_template) The rendered HTML template.</li>
-</ul>
+<hr />
+<h3 id="search-function">search Function<a class="headerlink" href="#search-function" title="Permanent link">&para;</a></h3>
+<p>This function is the route for the search form submission. It retrieves the user inputs, downloads a CSV file from an API, filters the data based on user inputs and desired criteria, creates a graph, and calls the <code>find_all_paths</code> function. Finally, it renders the <code>search.html</code> template with</p>
               
             </div>
           </div><footer>
