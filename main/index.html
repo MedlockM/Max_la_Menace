@@ -77,32 +77,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h5 id="find_all_paths">find_all_paths<a class="headerlink" href="#find_all_paths" title="Permanent link">&para;</a></h5>
-<p><strong>Parameters</strong>:
-- <code>G</code> (type: <em>networkx.classes.multidigraph.MultiDiGraph</em>) - The graph representing the train network.
-- <code>start_station</code> (type: <em>str</em>) - The starting station for finding paths.
-- <code>end_station</code> (type: <em>str</em>) - The ending station for finding paths.
-- <code>max_hops</code> (type: <em>int</em>) - The maximum number of hops allowed in a path.</p>
-<p><strong>Return</strong>:
-- <code>all_paths</code> (type: <em>list</em>) - A list containing all paths from the start station to the end station within the maximum number of hops.</p>
-<p><strong>Exception/Errors</strong>:
-- None.</p>
+                <h2 id="find_all_pathsg-start_station-end_station-max_hops">find_all_paths(G, start_station, end_station, max_hops)<a class="headerlink" href="#find_all_pathsg-start_station-end_station-max_hops" title="Permanent link">&para;</a></h2>
+<p>This function takes in four parameters:
+- <strong>G</strong>: a NetworkX graph object representing a directed multi-graph
+- <strong>start_station</strong>: a string representing the starting station
+- <strong>end_station</strong>: a string representing the end station
+- <strong>max_hops</strong>: an integer representing the maximum number of hops allowed</p>
+<p>The function finds all possible paths from the start station to the end station within the maximum number of hops specified. It returns a list of all paths found.</p>
+<p><strong>Parameters:</strong>
+- <strong>G</strong> (NetworkX graph object): a directed multi-graph representing the train network
+- <strong>start_station</strong> (str): the starting station
+- <strong>end_station</strong> (str): the end station
+- <strong>max_hops</strong> (int): the maximum number of hops allowed</p>
+<p><strong>Returns:</strong>
+- <strong>all_paths</strong> (list): a list of lists, where each inner list represents a path and contains tuples of the form (station, departure_time, train_number)</p>
+<p><strong>Raises:</strong>
+- None</p>
 <hr />
-<h5 id="index">index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h5>
-<p><strong>Parameters</strong>:
-- None.</p>
-<p><strong>Return</strong>:
-- <em>render_template</em> (type: <em>flask.templating.RenderTemplate</em>) - The HTML template for the index page.</p>
-<p><strong>Exception/Errors</strong>:
-- None.</p>
-<hr />
-<h5 id="search">search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h5>
-<p><strong>Parameters</strong>:
-- None.</p>
-<p><strong>Return</strong>:
-- <em>render_template</em> (type: <em>flask.templating.RenderTemplate</em>) - The HTML template for the search page.</p>
-<p><strong>Exception/Errors</strong>:
-- None.</p>
               
             </div>
           </div><footer>

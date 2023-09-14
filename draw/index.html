@@ -77,74 +77,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p>The <code>find_all_paths</code> function is used to find all paths from a start station to an end station within a maximum number of hops in a given graph.</p>
-<pre><code class="language-python">def find_all_paths(G, start_station, end_station, max_hops):
-    &quot;&quot;&quot;Find all paths from start station to end station with a maximum number of hops.
-
-    Parameters:
-    - G (networkx.MultiDiGraph): The graph representing the train connections.
-    - start_station (str): The name of the start station.
-    - end_station (str): The name of the end station.
-    - max_hops (int): The maximum number of hops.
-
-    Returns:
-    - all_paths (list): A list of all paths from start station to end station.
-
-    Raises:
-    - None.
-
-    &quot;&quot;&quot;
-
-    # List to store all paths
-    all_paths = []
-
-    # Recursive function to explore the graph
-    def dfs(current_station, hops, path):
-        &quot;&quot;&quot;Depth-first search (DFS) recursive function to explore the graph.
-
-        Parameters:
-        - current_station (str): The name of the current station.
-        - hops (int): The number of hops.
-        - path (list): The list of visited stations.
-
-        Returns:
-        - None.
-
-        Raises:
-        - None.
-
-        &quot;&quot;&quot;
-        # Base case: we've reached the end station
-        if current_station == end_station:
-            all_paths.append(path)
-            hops = 0
-            return
-
-        # Explore the neighbors of the current station
-        for departure, neighbor, key in G.edges(current_station, keys=True):
-            if neighbor not in [step[0] for step in path]:
-                # Check if we've exceeded the maximum number of hops
-                if hops &lt; max_hops:
-                    if hops != 0:
-                        last_train_arrival_time = datetime.datetime.strptime(G[path[-2][0]][path[-1][0]][path[-1][2]][&quot;heure_arrivee&quot;], '%H:%M').time()
-                    else:
-                        last_train_arrival_time = datetime.datetime.strptime('00:00', '%H:%M').time()
-                    current_train_departure_time = datetime.datetime.strptime(G[current_station][neighbor][key][&quot;heure_depart&quot;], '%H:%M').time()
-                    if current_train_departure_time &gt; last_train_arrival_time:
-                        dfs(neighbor, hops + 1, path + [(neighbor, current_train_departure_time, key)])
-
-    # Call the recursive function starting from the start station
-    dfs(start_station, 0, [(start_station, datetime.time(0, 0), 0)])
-
-    return all_paths
-</code></pre>
+                <h3 id="function-find_all_paths">Function find_all_paths<a class="headerlink" href="#function-find_all_paths" title="Permanent link">&para;</a></h3>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>G</code> (networkx.MultiDiGraph): The graph in which to find the paths.</li>
+<li><code>start_station</code> (str): The starting station for the paths.</li>
+<li><code>end_station</code> (str): The end station for the paths.</li>
+<li><code>max_hops</code> (int): The maximum number of hops allowed in a path.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li><code>all_paths</code> (list): A list of all paths from the start station to the end station within the maximum number of hops.</li>
+</ul>
+<p><strong>Exceptions/Errors:</strong></p>
+<p>This function does not raise any exceptions or errors.</p>
 <hr />
-<h4 id="example-usage">Example usage:<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h4>
+<p>This function finds all paths from the start station to the end station within a specified maximum number of hops in a given graph. It uses a depth-first search (DFS) algorithm to recursively explore the graph and find the paths.</p>
+<p>The function takes the following parameters:</p>
+<ul>
+<li><code>G</code>: The graph in which to find the paths.</li>
+<li><code>start_station</code>: The starting station for the paths.</li>
+<li><code>end_station</code>: The end station for the paths.</li>
+<li><code>max_hops</code>: The maximum number of hops allowed in a path.</li>
+</ul>
+<p>The function returns a list of all paths from the start station to the end station within the specified maximum number of hops.</p>
+<p>Example usage:</p>
 <pre><code class="language-python">start_station = &quot;MARSEILLE ST CHARLES&quot;
 end_station = &quot;LYON (intramuros)&quot;
 max_hops = 6
 paths = find_all_paths(G, start_station, end_station, max_hops)
-
 if paths:
     for path in paths:
         print(f&quot;Path: {path}&quot;)
@@ -152,9 +113,7 @@ else:
     print(&quot;No paths found&quot;)
 </code></pre>
 <hr />
-<p>The example demonstrates how to use the <code>find_all_paths</code> function. It finds all paths from the start station "MARSEILLE ST CHARLES" to the end station "LYON (intramuros)" within a maximum of 6 hops. If any paths are found, it prints the paths. Otherwise, it prints "No paths found".</p>
 <hr />
-<p>Please note that the above example assumes that the <code>G</code> graph and other required variables have been defined and initialized prior to calling the <code>find_all_paths</code> function.</p>
               
             </div>
           </div><footer>
