@@ -51,10 +51,6 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Main</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#returns">Returns</a>
-    </li>
     </ul>
                 </li>
               </ul>
@@ -83,24 +79,18 @@
               
                 <h3 id="find_all_paths-function">find_all_paths Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h3>
 <p>This function is used to find all paths from the start station to the end station in a given graph with a maximum number of hops.</p>
-<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<p><strong>Parameters</strong></p>
 <ul>
 <li><code>G</code> (Graph): The graph representing the train network.</li>
 <li><code>start_station</code> (str): The name of the start station.</li>
 <li><code>end_station</code> (str): The name of the end station.</li>
 <li><code>max_hops</code> (int): The maximum number of hops allowed in the path.</li>
 </ul>
-<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
+<p><strong>Returns</strong></p>
 <ul>
 <li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
 </ul>
-<p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.</p>
-<hr />
-<h3 id="index-function">index Function<a class="headerlink" href="#index-function" title="Permanent link">&para;</a></h3>
-<p>This function is responsible for rendering the index.html template with a sorted list of stations.</p>
-<hr />
-<h3 id="search-function">search Function<a class="headerlink" href="#search-function" title="Permanent link">&para;</a></h3>
-<p>This function is triggered when the user submits the search form. It retrieves the user inputs, downloads a CSV file from an API URL, builds a dataframe, filters the dataframe based on defined criteria, creates a multi-graph representation of the train network using NetworkX, and calls the <code>find_all_paths()</code> function to find all paths from the start</p>
+<h2 id="note-the-function-assumes-that-the-graph-g-is-already-created-and-contains-the-necessary-information-about-the-train-network"><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.<a class="headerlink" href="#note-the-function-assumes-that-the-graph-g-is-already-created-and-contains-the-necessary-information-about-the-train-network" title="Permanent link">&para;</a></h2>
               
             </div>
           </div><footer>

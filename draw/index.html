@@ -94,7 +94,77 @@
 <ul>
 <li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
 </ul>
-<p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.</p>
+<p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information 
+about the train network.</p>
+<hr />
+<h3 id="is_csv_exists-function">is_csv_exists Function<a class="headerlink" href="#is_csv_exists-function" title="Permanent link">&para;</a></h3>
+<p>This function is used to check if the CSV file exists.</p>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>file_name</code> (str): The name of the file to check.</li>
+</ul>
+<h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>exists</code> (bool): True if the file exists, False otherwise.</li>
+</ul>
+<hr />
+<h3 id="load_csv_into_dataframe-function">load_csv_into_dataframe Function<a class="headerlink" href="#load_csv_into_dataframe-function" title="Permanent link">&para;</a></h3>
+<p>This function loads a CSV file into a pandas DataFrame.</p>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>file_name</code> (str): The name of the CSV file to load.</li>
+</ul>
+<h4 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>df</code> (DataFrame): The pandas DataFrame containing the data from the CSV file.</li>
+</ul>
+<hr />
+<h3 id="download_csv-function">download_csv Function<a class="headerlink" href="#download_csv-function" title="Permanent link">&para;</a></h3>
+<p>This function downloads a CSV file from a given URL and saves it to the local machine.</p>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>url</code> (str): The URL to download the CSV file from.</li>
+<li><code>file_name</code> (str): The name to save the downloaded file as.</li>
+</ul>
+<h4 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>None</li>
+</ul>
+<hr />
+<h3 id="filter_dataframe-function">filter_dataframe Function<a class="headerlink" href="#filter_dataframe-function" title="Permanent link">&para;</a></h3>
+<p>This function filters a pandas DataFrame based on user input and a specific column.</p>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>df</code> (DataFrame): The pandas DataFrame to filter.</li>
+<li><code>column_name</code> (str): The name of the column to filter on.</li>
+<li><code>value</code> (str): The value to filter for.</li>
+</ul>
+<h4 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>filtered_df</code> (DataFrame): The filtered pandas DataFrame.</li>
+</ul>
+<hr />
+<h3 id="create_graph-function">create_graph Function<a class="headerlink" href="#create_graph-function" title="Permanent link">&para;</a></h3>
+<p>This function creates a graph from a pandas DataFrame.</p>
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>df</code> (DataFrame): The pandas DataFrame containing the data to create the graph from.</li>
+</ul>
+<h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>G</code> (Graph): The created graph.</li>
+</ul>
+<hr />
+<h3 id="get_unique_stations-function">get_unique_stations Function<a class="headerlink" href="#get_unique_stations-function" title="Permanent link">&para;</a></h3>
+<p>This function returns a list of unique station names from a pandas DataFrame.</p>
+<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>df</code> (DataFrame): The pandas DataFrame to get the unique station names from.</li>
+</ul>
+<h4 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>stations</code> (list): A list of unique station names.</li>
+</ul>
 <hr />
               
             </div>
