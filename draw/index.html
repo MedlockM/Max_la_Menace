@@ -47,6 +47,10 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Draw</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#returns">Returns</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -79,55 +83,19 @@
               
                 <h3 id="find_all_paths-function">find_all_paths Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h3>
 <p>This function is used to find all paths from the start station to the end station in a given graph with a maximum number of hops.</p>
-<p><strong>Parameters</strong></p>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>G</code> (Graph): The graph representing the train network.</li>
 <li><code>start_station</code> (str): The name of the start station.</li>
 <li><code>end_station</code> (str): The name of the end station.</li>
 <li><code>max_hops</code> (int): The maximum number of hops allowed in the path.</li>
 </ul>
-<p><strong>Returns</strong></p>
+<h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
 </ul>
 <p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.</p>
 <hr />
-<h3 id="main-script">main Script<a class="headerlink" href="#main-script" title="Permanent link">&para;</a></h3>
-<p>The main script performs the following steps to download a CSV file, process the data, create a graph, and find all paths between two stations:</p>
-<ol>
-<li>
-<p>Download the CSV file from the specified URL and save it as "tgvmax-auto.csv".</p>
-</li>
-<li>
-<p>Load the downloaded CSV file into a pandas DataFrame.</p>
-</li>
-<li>
-<p>Filter the DataFrame based on user input for the 'od_happy_card' column and the specified date.</p>
-</li>
-<li>
-<p>Drop unnecessary columns from the DataFrame.</p>
-</li>
-<li>
-<p>Create an empty multigraph to represent the train network.</p>
-</li>
-<li>
-<p>Get a set of all unique station names.</p>
-</li>
-<li>
-<p>Add each station as a node in the graph.</p>
-</li>
-<li>
-<p>Iterate through each row of the DataFrame and create edges in the graph based on the origin, destination, train number, departure time, and arrival time.</p>
-</li>
-<li>
-<p>Call the <code>find_all_paths</code> function to find all paths from the start station to the end station with the specified maximum number of hops.</p>
-</li>
-</ol>
-<hr />
-<h3 id="example-usage">Example usage<a class="headerlink" href="#example-usage" title="Permanent link">&para;</a></h3>
-<p>The example usage section demonstrates how to use the <code>find_all_paths</code> function to find all paths from the "MARSEILLE ST CHARLES" station to the "LYON (intramuros)" station with a maximum of 6 hops.</p>
-<p>The result is printed as a list of paths.</p>
-<p>If no paths are found, a message indicating that no paths were found is printed.</p>
               
             </div>
           </div><footer>

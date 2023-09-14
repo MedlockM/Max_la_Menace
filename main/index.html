@@ -97,14 +97,10 @@
 <p><strong>Note:</strong> The function assumes that the graph <code>G</code> is already created and contains the necessary information about the train network.</p>
 <hr />
 <h3 id="index-function">index Function<a class="headerlink" href="#index-function" title="Permanent link">&para;</a></h3>
-<p>This function is the main route of the Flask application. It renders the <code>index.html</code> template and passes a sorted list of stations to the template.</p>
-<h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
-<ul>
-<li>HTML template rendered with stations data.</li>
-</ul>
+<p>This function is responsible for rendering the index.html template with a sorted list of stations.</p>
 <hr />
 <h3 id="search-function">search Function<a class="headerlink" href="#search-function" title="Permanent link">&para;</a></h3>
-<p>This function is the route for the search form submission. It retrieves the user inputs, downloads a CSV file from an API, filters the data based on user inputs and desired criteria, creates a graph, and calls the <code>find_all_paths</code> function. Finally, it renders the <code>search.html</code> template with</p>
+<p>This function is triggered when the user submits the search form. It retrieves the user inputs, downloads a CSV file from an API URL, builds a dataframe, filters the dataframe based on defined criteria, creates a multi-graph representation of the train network using NetworkX, and calls the <code>find_all_paths()</code> function to find all paths from the start</p>
               
             </div>
           </div><footer>
