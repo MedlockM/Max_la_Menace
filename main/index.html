@@ -77,22 +77,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="find_all_pathsg-start_station-end_station-max_hops">find_all_paths(G, start_station, end_station, max_hops)<a class="headerlink" href="#find_all_pathsg-start_station-end_station-max_hops" title="Permanent link">&para;</a></h2>
-<p>This function takes in four parameters:
-- <strong>G</strong>: a NetworkX graph object representing a directed multi-graph
-- <strong>start_station</strong>: a string representing the starting station
-- <strong>end_station</strong>: a string representing the end station
-- <strong>max_hops</strong>: an integer representing the maximum number of hops allowed</p>
-<p>The function finds all possible paths from the start station to the end station within the maximum number of hops specified. It returns a list of all paths found.</p>
-<p><strong>Parameters:</strong>
-- <strong>G</strong> (NetworkX graph object): a directed multi-graph representing the train network
-- <strong>start_station</strong> (str): the starting station
-- <strong>end_station</strong> (str): the end station
-- <strong>max_hops</strong> (int): the maximum number of hops allowed</p>
-<p><strong>Returns:</strong>
-- <strong>all_paths</strong> (list): a list of lists, where each inner list represents a path and contains tuples of the form (station, departure_time, train_number)</p>
-<p><strong>Raises:</strong>
-- None</p>
+                <h3 id="function-find_all_pathsg-start_station-end_station-max_hops">Function find_all_paths(G, start_station, end_station, max_hops)<a class="headerlink" href="#function-find_all_pathsg-start_station-end_station-max_hops" title="Permanent link">&para;</a></h3>
+<p>This function finds all paths between two stations in a given graph, with a maximum number of hops.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>G (networkx.MultiDiGraph) - The graph representing train connections.</li>
+<li>start_station (string) - The starting station name.</li>
+<li>end_station (string) - The destination station name.</li>
+<li>max_hops (int) - The maximum number of hops allowed to reach the destination.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>all_paths (list) - A list of all paths between the start and end stations.</li>
+</ul>
+<p><strong>Exceptions/Errors:</strong></p>
+<p>None</p>
 <hr />
               
             </div>
