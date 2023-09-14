@@ -77,30 +77,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="find_all_pathsg-start_station-end_station-max_hops">find_all_paths(G, start_station, end_station, max_hops)<a class="headerlink" href="#find_all_pathsg-start_station-end_station-max_hops" title="Permanent link">&para;</a></h2>
-<hr />
-<p>This is a function that takes a MultiDiGraph, start_station, end_station, and max_hops as arguments and returns all paths from the start station to the end station with a maximum number of hops.</p>
-<hr />
-<p><strong>Parameters</strong>:</p>
+                <h2 id="find_all_paths-function"><code>find_all_paths</code> Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h2>
+<p>This function finds all paths from the start station to the end station with a maximum number of hops.</p>
 <ul>
-<li><code>G</code> (<code>networkx.classes.multidigraph.MultiDiGraph</code>): The MultiDiGraph.</li>
-<li><code>start_station</code> (<code>str</code>): The start station.</li>
-<li><code>end_station</code> (<code>str</code>): The end station.</li>
-<li><code>max_hops</code> (<code>int</code>): The maximum number of hops allowed.</li>
+<li><strong>Parameters</strong><ul>
+<li><code>G</code> (networkx.Multigraph): The multigraph representing the train network.</li>
+<li><code>start_station</code> (str): The name of the start station.</li>
+<li><code>end_station</code> (str): The name of the end station.</li>
+<li><code>max_hops</code> (int): The maximum number of hops allowed for the paths.</li>
 </ul>
-<hr />
-<p><strong>Returns</strong>:</p>
-<ul>
-<li><code>all_paths</code> (<code>list</code> of <code>list</code> of <code>tuples</code>): All possible paths from the start to the end within the maximum allowed hops. Each path is represented as a list of tuples where each tuple is a step in the path and contains the neighbor, departure time, and the key of a train journey.</li>
+</li>
+<li><strong>Returns</strong><ul>
+<li><code>all_paths</code> (list): A list of all paths from the start station to the end station.</li>
 </ul>
-<hr />
-<p><strong>Raises</strong>:</p>
-<ul>
-<li>This function does not raise any exceptions.</li>
+</li>
+<li><strong>Errors/Exceptions</strong><ul>
+<li>None.</li>
 </ul>
-<hr />
-<pre><code>------------------------------------------------------------------------------------------------------------------------
-</code></pre>
+</li>
+</ul>
               
             </div>
           </div><footer>

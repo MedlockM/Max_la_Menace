@@ -78,56 +78,55 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="find_all_paths-function"><code>find_all_paths</code> Function<a class="headerlink" href="#find_all_paths-function" title="Permanent link">&para;</a></h2>
-<p>This function accepts a networkx graph, a starting station, an ending station, and a maximum number of hops. It explores all possible paths between the start station and end station within the limit of max hops through a DFS. The function stores a path if it reaches the destination within the maximum number of hops.</p>
+<p>This function finds all possible paths between two stations in a given graph.</p>
 <ul>
 <li><strong>Parameters</strong><ul>
-<li><code>G</code> (nx.MultiDiGraph): The graph on which to find paths.</li>
-<li><code>start_station</code> (str): The starting station of the paths.</li>
-<li><code>end_station</code> (str): The ending station of the paths.</li>
-<li><code>max_hops</code> (int): The maximum number of hops allowed for a path.</li>
+<li><code>G</code> (nx.MultiDiGraph): The graph representing the train network.</li>
+<li><code>start_station</code> (str): The starting station.</li>
+<li><code>end_station</code> (str): The destination station.</li>
+<li><code>max_hops</code> (int): The maximum number of hops allowed in a path.</li>
 </ul>
 </li>
 <li><strong>Returns</strong><ul>
-<li><code>all_paths</code> (list): List of all the valid paths found.</li>
+<li><code>all_paths</code> (list): A list of all the paths found between the start and end stations.</li>
 </ul>
 </li>
 <li><strong>Errors/Exceptions</strong><ul>
-<li>This function presumes that the graph <code>G</code> is correctly initialized and contains the <code>start_station</code> and <code>end_station</code>. Else, it will not return meaningful results.</li>
+<li>None</li>
 </ul>
 </li>
 </ul>
 <hr />
 <h2 id="index-function"><code>index</code> Function<a class="headerlink" href="#index-function" title="Permanent link">&para;</a></h2>
-<p>Renders the <code>index.html</code> page with a list of sorted stations.</p>
+<p>This function renders the index page of the Flask web app.</p>
 <ul>
 <li><strong>Parameters</strong><ul>
 <li>None</li>
 </ul>
 </li>
 <li><strong>Returns</strong><ul>
-<li>HTML Template: The rendered <code>index.html</code> page containing the list of sorted stations.</li>
+<li>The rendered index template.</li>
 </ul>
 </li>
 <li><strong>Errors/Exceptions</strong><ul>
-<li>If the <code>index.html</code> page does not exist in the application's templates folder, this function will throw an error.</li>
+<li>None</li>
 </ul>
 </li>
 </ul>
 <hr />
 <h2 id="search-function"><code>search</code> Function<a class="headerlink" href="#search-function" title="Permanent link">&para;</a></h2>
-<p>This function accepts user inputted data via a POST request. It filters a DataFrame based on this input data and calculates all the valid paths from the starting station to ending station given the maximum number of hops. It then renders the <code>search.html</code> page along with the valid paths.</p>
+<p>This function handles the search form submission and returns the search results.</p>
 <ul>
 <li><strong>Parameters</strong><ul>
 <li>None</li>
 </ul>
 </li>
 <li><strong>Returns</strong><ul>
-<li>HTML Template: The rendered <code>search.html</code> page containing the list of valid paths from the start station to end station with the inputted maximum number of hops.</li>
+<li>The rendered search template.</li>
 </ul>
 </li>
 <li><strong>Errors/Exceptions</strong><ul>
-<li>If user input data is not provided properly, this function may fail or produce unexpected results.</li>
-<li>This function also expects the <code>search.html</code> page to exist in the application's templates folder. If it does not exist, the function will throw an error.</li>
+<li>None</li>
 </ul>
 </li>
 </ul>
