@@ -4,10 +4,17 @@ import networkx as nx
 import datetime
 import requests
 
+# Flask app initialization
 app = Flask(__name__)
 
+# SNCF dataframe initialization
+global df_init
+df_init = []
 
 def find_all_paths(G, start_station, end_station, max_hops):
+    '''Find all paths from start station to end station using a depth first search on a
+    multi edge graph structure of the SNCF travel network'''
+
     # List to store all paths
     all_paths = []
 
@@ -53,34 +60,29 @@ def index():
     sorted_stations = sorted(stations)
     return render_template('index.html', stations=sorted_stations)
 
-
 @app.route('/search', methods=['POST'])
 def search():
     date_user = request.form['date']
     start_station = request.form['start_station']
     end_station = request.form['end_station']
     max_hops = int(request.form['max_hops'])
+    print('date user :', date_user)
+    print('start station :', start_station)
+    print('end station :', end_station)
     print('max hops :', max_hops)
-    # Download the CSV file from the API URL and build the dataframe
-    url = "https://ressources.data.sncf.com/api/explore/v2.0/catalog/datasets/tgvmax/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=false"
-    params = {
-        'delimiter': ';',
-        'list_separator': ',',
-        'quote_all': 'false',
-        'with_bom': 'false'
-    }
-    #response = requests.get(url, params=params, verify=False)
 
-    df = pd.read_csv(url, sep=';')
-    print(df)
-    print(df[df['date']=="2023-06-28"])
-    print(df[df['date']=="2023-06-16"])
+    # response = requests.get(url, params=params, verify=False)
+    global df_init
+    if len(df_init)==0:
+        # Download the CSV file from the API URL and build the dataframe
+        url = "https://ressources.data.sncf.com/api/explore/v2.0/catalog/datasets/tgvmax/exports/csv?delimiter=%3B&list_separator=%2C&quote_all=false&with_bom=false"
+        df_init = pd.read_csv(url, sep=';')
+        print(df_init.head())
     # Filter the dataframe based on user inputs and desired criteria
-    df = df[(df['date'] == date_user) & (df['od_happy_card'] == 'OUI')]
-
+    df = df_init[(df_init['date'] == date_user) & (df_init['od_happy_card'] == 'OUI')]
+    print(df.info())
     # Drop unnecessary columns
     df.drop(['date', 'od_happy_card'], axis=1, inplace=True)
-    print(df)
     # Create an empty multigraph
     G = nx.MultiDiGraph()
     stations = set(df["origine"]).union(set(df["destination"]))
